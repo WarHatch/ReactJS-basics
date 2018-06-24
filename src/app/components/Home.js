@@ -1,27 +1,25 @@
 import React from "react";
 
 export class Home extends React.Component {
-  constructor(){
+  constructor(props) {
     super();
     this.age = props.age;
   }
-  
-  onMakeOlder(){
-    this.age += 100;
+
+  onMakeOlder() {
+    this.age += 3; // doesn't update the UI
   }
 
   render() {
+    const age = this.age + 1;
     return (
       <div>
-        <p>In a new Component</p>
-        <p>Your name is: {this.props.name}, your age is {this.age} </p>
+        <h3>Hello {this.props.name}!</h3>
+        <p>You're almost {age}</p>
+        <button onClick={this.onMakeOlder.bind(this)} className="btn btn-primary">Make me older!</button>
         <hr/>
-        <button className="btn btn-primary">Make me older!</button>
+        <button onClick={this.props.greet} className="btn btn-success">Greet me!</button>
       </div>
-    )
+  );
   }
-}
-
-Home.propTypes = {
-  name: React.propTypes.string,
 }
