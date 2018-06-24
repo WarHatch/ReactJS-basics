@@ -3,11 +3,15 @@ import React from "react";
 export class Home extends React.Component {
   constructor(props) {
     super();
-    this.age = props.age;
+    this.state = {
+      age: props.initialAge
+    }
   }
 
   onMakeOlder() {
-    this.age += 3; // doesn't update the UI
+    this.setState({
+      age: this.state.age + 100 
+    });
   }
 
   render() {
@@ -15,7 +19,7 @@ export class Home extends React.Component {
     return (
       <div>
         <h3>Hello {this.props.name}!</h3>
-        <p>You're almost {age}</p>
+        <p>You're almost {this.state.age}</p>
         <button onClick={this.onMakeOlder.bind(this)} className="btn btn-primary">Make me older!</button>
         <hr/>
         <button onClick={this.props.greet} className="btn btn-success">Greet me!</button>
